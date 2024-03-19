@@ -4,6 +4,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { EventContentArg } from "@fullcalendar/core/index.js";
 import interactionPlugin from "@fullcalendar/interaction";
+import timeGridPlugin from "@fullcalendar/timegrid";
 
 type EventObject = {
   start: Date | string;
@@ -50,16 +51,17 @@ export default function Home() {
           select={handleSelect}
           headerToolbar={{
             start: "today prev next",
-            end: "dayGridWeek",
+            end: "timeGridWeek",
           }}
-          plugins={[dayGridPlugin, interactionPlugin]}
+          plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
           initialView="dayGridWeek"
           weekends={false}
           events={events}
           eventContent={renderEventContent}
           views={{
-            dayGridWeek: {
+            timeGridWeek: {
               title: "Weekly",
+              type: "timeGrid",
             },
           }}
         />
